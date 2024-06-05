@@ -121,6 +121,6 @@ app.post('/events', async (req, res) => {
 });
 
 
-app.listen(process.env.PORT || 4001, () => {
-    console.log("Classroom service listening at port 4001...", process.env.PORT || 4001);
-})
+app.listen(process.env.PORT || 3175, () => {
+	console.log("Classroom service listening at port 3175...", process.env.PORT || 3175);
+});

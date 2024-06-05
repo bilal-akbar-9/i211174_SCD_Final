@@ -24,6 +24,6 @@ app.post('/events', async (req, res) => {
     res.send({ status: 'OK' });
 })
 
-app.listen(process.env.PORT || 4009, () => {
-    console.log("Events service listening at 4009...", process.env.PORT || 4000);
-})
+app.listen(process.env.PORT || 3180, () => {
+	console.log("Events service listening at 3180...", process.env.PORT || 3180);
+});

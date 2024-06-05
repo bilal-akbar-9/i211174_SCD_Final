@@ -2,7 +2,7 @@
 FROM node:20.13.1-alpine3.19
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /your_i211174_post_backend
 
 # Copy the current directory contents into the container at /usr/src/app
 COPY package*.json ./
@@ -14,10 +14,10 @@ RUN npm install
 COPY . .
 
 # Make port 8000 available to the world outside this container
-EXPOSE 4002
+EXPOSE 3176
 
 # Define environment variable, the port and MONGO_DB_SECRET
-ENV PORT=4002
+ENV PORT=3176
 
 # Run app.py when the container launches
 CMD ["node", ".index.js"]

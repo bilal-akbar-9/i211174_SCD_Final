@@ -102,6 +102,6 @@ app.post('/events', async (req, res) => {
 })
 
 
-app.listen(process.env.PORT || 4002, () => {
-    console.log("Post service listening on port 4002...", process.env.PORT || 4002);
+app.listen(process.env.PORT || 3176, () => {
+    console.log("Post service listening on port 3176...", process.env.PORT || 3176);
 })

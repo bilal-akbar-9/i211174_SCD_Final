@@ -75,6 +75,6 @@ app.post('/events', (req, res) => {
   res.send({});
 })
 
-app.listen(process.env.PORT || 4000, () => {
-    console.log('Authentication Server listening at port 4000...', process.env.PORT || 4000);
-})
+app.listen(process.env.PORT || 3174, () => {
+	console.log("Authentication Server listening at port 3174...", process.env.PORT || 3174);
+});
