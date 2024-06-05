@@ -20,4 +20,4 @@ EXPOSE 3180
 ENV PORT=3180
 
 # Run app.py when the container launches
-CMD ["node", ".index.js"]
+CMD ["node", "index.js"]

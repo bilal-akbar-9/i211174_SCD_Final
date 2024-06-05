@@ -14,7 +14,7 @@ spec:
     metadata:
       name: auth-1174-backend # name of the pod
       labels:
-        app: episode-1 # Indicates that this pod is part of episode-1 application
+        app: scd-final # Indicates that this pod is part of episode-1 application
         type: backend-auth-pod # Can be used to filter the pods
         name: auth-1174-backend # Add this line to match the selector
     spec:
