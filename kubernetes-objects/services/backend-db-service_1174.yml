@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-1174-db-service
+spec:
+  type: ClusterIP
+  selector:
+    app: episode-1
+    type: db-pod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 27017

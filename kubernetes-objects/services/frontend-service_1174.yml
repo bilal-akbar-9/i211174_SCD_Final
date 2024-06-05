@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service # Name of the service
+spec:
+  type: NodePort # This makes the service accessible on a port on each node
+  selector:
+    app: scd-final # Selects the pods with the label 'app: episode-1'
+    type: frontend-pod # Selects the pods with the label 'type: frontend'
+  ports:
+    - protocol: TCP
+      port: 1174 # External port that the service will listen on
+      targetPort: 1174 # Port on the pod that the service will forward traffic to
+      nodePort: 31174 # Port on the node that the service will forward traffic to
+

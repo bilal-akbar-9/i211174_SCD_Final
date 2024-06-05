@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-1174-db-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: scd-final
+      name: backend-db
+  template:
+    metadata:
+      name: backend-db
+      labels:
+        app: scd-final
+        type: db-pod
+        name: backend-db
+    spec:
+      containers:
+      - name: mongo
+        image: mongo:4.4.6 # Use the latest MongoDB image or specify a version
+        ports:
+        - containerPort: 27017
+

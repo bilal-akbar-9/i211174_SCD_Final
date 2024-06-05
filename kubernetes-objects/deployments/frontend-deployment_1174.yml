@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-1174-deployment
+  labels:
+    app: scd-final
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: scd-final
+      name: frontend-1174
+  template:
+    metadata:
+      name: frontend-1174 # name of the pod
+      labels:
+        app: scd-final # Indicates that this pod is part of episode-1 application
+        type: frontend-pod # Can be used to filter the pods
+        name: frontend-1174 # Add this line to match the selector
+    spec:
+      containers:
+        - name: myapp-1174
+          image: bi1alakbar/scd-final-backend-post:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 1174
+          env:
+            - name: REACT_APP_AUTH_URL
+              value: http://auth-backend-service:3174
+            - name: REACT_APP_CR_URL
+              value: http://classroom-backend-service:3175
+            - name: REACT_APP_POST_URL
+              value: http://post-backend-service:3176
+            - name: REACT_APP_EVENTBUS_URL
+              value: http://eventbus-backend-service:3180
