@@ -6,7 +6,6 @@ pipeline {
         DOCKERHUB_REPO_PREFIX = 'bi1alakbar/scd-final-backend'
         FRONTEND_REPO = 'bi1alakbar/scd-final-frontend'
         IMAGE_TAG = '1'
-        SERVICES = ['auth', 'classrooms', 'event-bus', 'post', 'frontend']
     }
 
     stages {
@@ -20,6 +19,7 @@ pipeline {
         stage('i211174-Build and Push Docker Images') {
             steps {
                 script {
+                    def services = ['Auth', 'Classrooms', 'event-bus', 'Post', 'client']
                     for (service in SERVICES) {
                         def imageName = service == 'frontend' ? "${FRONTEND_REPO}:${IMAGE_TAG}" : "${DOCKERHUB_REPO_PREFIX}-${service}:${IMAGE_TAG}"
                         def dockerfilePath = service == 'frontend' ? 'client' : service
