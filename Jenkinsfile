@@ -19,8 +19,8 @@ pipeline {
         stage('i211174-Build and Push Docker Images') {
             steps {
                 script {
-                    def SERVICES = ['Auth', 'Classrooms', 'event-bus', 'Post', 'client']
-                    for (service in SERVICES) {
+                    def services = ['Auth', 'Classrooms', 'event-bus', 'Post', 'client']
+                    for (service in services) {
                         def imageName = service == 'frontend' ? "${FRONTEND_REPO}:${IMAGE_TAG}" : "${DOCKERHUB_REPO_PREFIX}-${service}:${IMAGE_TAG}"
                         def dockerfilePath = service == 'frontend' ? 'client' : service
 
