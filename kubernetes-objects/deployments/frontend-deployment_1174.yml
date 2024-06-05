@@ -4,6 +4,9 @@ metadata:
   name: frontend-1174-deployment
   labels:
     app: scd-final
+  annotations:
+    description: "Frontend service for SCD final project"
+    version: "1.0"
 spec:
   replicas: 2
   selector:
@@ -12,11 +15,11 @@ spec:
       name: frontend-1174
   template:
     metadata:
-      name: frontend-1174 # name of the pod
+      name: frontend-1174
       labels:
-        app: scd-final # Indicates that this pod is part of episode-1 application
-        type: frontend-pod # Can be used to filter the pods
-        name: frontend-1174 # Add this line to match the selector
+        app: scd-final
+        type: frontend-pod
+        name: frontend-1174
     spec:
       containers:
         - name: myapp-1174
@@ -33,3 +36,22 @@ spec:
               value: http://post-backend-service:3176
             - name: REACT_APP_EVENTBUS_URL
               value: http://eventbus-backend-service:3180
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "128Mi"
+            limits:
+              cpu: "100m"
+              memory: "256Mi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 1174
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 1174
+            initialDelaySeconds: 30
+            periodSeconds: 5

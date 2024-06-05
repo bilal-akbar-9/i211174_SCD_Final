@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-1174-db-deployment
+  labels:
+    app: scd-final
+  annotations:
+    description: "Database service for SCD final project"
+    version: "1.0"
 spec:
   replicas: 2
   selector:
@@ -18,7 +23,13 @@ spec:
     spec:
       containers:
       - name: mongo
-        image: mongo:4.4.6 # Use the latest MongoDB image or specify a version
+        image: mongo:4.4.6
         ports:
         - containerPort: 27017
-
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "200m"
+            memory: "512Mi"

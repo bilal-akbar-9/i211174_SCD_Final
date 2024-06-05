@@ -4,6 +4,9 @@ metadata:
   name: eventbus-1174-backend-deployment
   labels:
     app: scd-final
+  annotations:
+    description: "Event bus service for SCD final project"
+    version: "1.0"
 spec:
   replicas: 2
   selector:
@@ -12,11 +15,11 @@ spec:
       name: eventbus-1174-backend
   template:
     metadata:
-      name: eventbus-1174-backend # name of the pod
+      name: eventbus-1174-backend
       labels:
-        app: scd-final # Indicates that this pod is part of episode-1 application
-        type: backend-eventbus-pod # Can be used to filter the pods
-        name: eventbus-1174-backend # Add this line to match the selector
+        app: scd-final
+        type: backend-eventbus-pod
+        name: eventbus-1174-backend
     spec:
       containers:
         - name: myapp-1174
@@ -27,3 +30,20 @@ spec:
           env:
             - name: MONGO_URL
               value: mongodb://backend-1174-db-service:80/A3?directConnection=true
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
+          livenessProbe:
+            tcpSocket:
+              port: 3176
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 3176
+            initialDelaySeconds: 10
+            periodSeconds: 5
