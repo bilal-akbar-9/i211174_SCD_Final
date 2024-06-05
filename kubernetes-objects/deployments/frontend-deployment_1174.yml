@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: myapp-1174
-          image: bi1alakbar/scd-final-backend-post:1
+          image: bi1alakbar/scd-final-frontend:1
           imagePullPolicy: Always
           ports:
             - containerPort: 1174
